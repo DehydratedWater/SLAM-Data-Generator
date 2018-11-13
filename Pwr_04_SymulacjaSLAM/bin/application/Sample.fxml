@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane id="mainLayout" fx:id="panel" prefHeight="598.0" prefWidth="1123.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SampleController">
+   <right>
+      <HBox prefHeight="602.0" prefWidth="663.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="599.0" prefWidth="351.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lidar Range" />
+                  <Slider fx:id="range" majorTickUnit="50.0" max="600.0" min="50.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" value="100.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Speed" />
+                  <Slider fx:id="speedSlider" majorTickUnit="1.0" max="3.0" minorTickCount="5" showTickLabels="true" showTickMarks="true" value="2.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rotation Speed" />
+                  <Slider fx:id="rotSpeedSlider" majorTickUnit="1.0" max="8.0" minorTickCount="5" showTickLabels="true" showTickMarks="true" value="4.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="360.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset:">
+                           <HBox.margin>
+                              <Insets left="5.0" right="40.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Button mnemonicParsing="false" onAction="#resetTrack" prefWidth="60.0" text="Track">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#resetTime" prefWidth="60.0" text="Time">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#resetMap" prefWidth="60.0" text="Map">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#resetEncoder" prefWidth="60.0" text="Encoder" />
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="360.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Show:">
+                           <HBox.margin>
+                              <Insets left="5.0" right="40.0" />
+                           </HBox.margin>
+                        </Text>
+                        <CheckBox fx:id="showTrack" mnemonicParsing="false" selected="true" text="Track">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="showRays" mnemonicParsing="false" selected="true" text="Lidar Rays">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="showDots" mnemonicParsing="false" selected="true" text="Lidar Dots">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="showCollisions" mnemonicParsing="false" selected="true" text="Collision">
+                           <padding>
+                              <Insets bottom="4.0" />
+                           </padding>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="26.0" prefWidth="360.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Canvas fx:id="rangeCanvas" height="120.0" width="360.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PosX" />
+                  <Slider fx:id="posXSlider" max="400.0" showTickLabels="true" showTickMarks="true" value="200.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PosY" />
+                  <Slider fx:id="posYSlider" max="400.0" showTickLabels="true" showTickMarks="true" value="200.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rot" />
+                  <Slider fx:id="rotSlider" majorTickUnit="40.0" max="360.0" showTickLabels="true" showTickMarks="true">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="599.0" prefWidth="309.0">
+               <children>
+                  <Region prefHeight="8.0" prefWidth="303.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wheel size" />
+                  <Slider fx:id="weelSizeSlider" majorTickUnit="2.0" max="25.0" min="1.0" showTickLabels="true" showTickMarks="true" value="12.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wheel distance" />
+                  <Slider fx:id="weelSlider" majorTickUnit="3.0" max="30.0" min="1.0" showTickLabels="true" showTickMarks="true" value="10.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Encoder precision" />
+                  <Slider fx:id="encoderSlider" majorTickUnit="30.0" max="359.0" min="1.0" showTickLabels="true" showTickMarks="true" value="120.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lidar precision" />
+                  <VBox alignment="CENTER" prefHeight="63.0" prefWidth="303.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="303.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ray number: " wrappingWidth="89.732421875">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <TextField fx:id="precision" prefHeight="25.0" prefWidth="148.0" text="360" />
+                           </children>
+                        </HBox>
+                        <Region prefHeight="6.0" prefWidth="303.0" />
+                        <Button mnemonicParsing="false" onAction="#setPrecision" text="Set precision" />
+                     </children>
+                  </VBox>
+                  <Region prefHeight="26.0" prefWidth="360.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="303.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left Encoder:    " wrappingWidth="90.732421875">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="leftEncoder" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="303.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Right Encoder:  " wrappingWidth="90.419921875">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="rightEncoder" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="303.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diffrence:" wrappingWidth="90.419921875">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="diffrenceEncoder" />
+                     </children>
+                  </HBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="303.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" wrappingWidth="90.419921875">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="portAddres" text="8080" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="303.0">
+                     <children>
+                        <Button fx:id="serverButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#serverAction" prefHeight="25.0" prefWidth="192.0" text="Start server" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </right>
+   <center>
+      <Pane prefHeight="600.0" prefWidth="466.0" BorderPane.alignment="CENTER">
+         <children>
+            <Canvas fx:id="canvas" height="400.0" layoutX="25.0" layoutY="25.0" width="400.0" />
+            <Canvas fx:id="trackCanvas" height="400.0" layoutX="25.0" layoutY="25.0" width="400.0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
